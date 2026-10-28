@@ -23,10 +23,14 @@ export default function OtraScreenAdmin({
           text: "Cerrar sesión",
           style: "destructive",
           onPress: () => {
-            navigation.getParent()?.reset({
-              index: 0,
-              routes: [{ name: "Login" }],
-            });
+            const cerrarSesion = () => {
+    navigation
+      .getParent()
+      ?.reset({
+        index: 0,
+        routes: [{ name: "Login" }],
+      });
+  };
           },
         },
       ]
@@ -40,13 +44,18 @@ export default function OtraScreenAdmin({
       </Text>
 
       <TouchableOpacity
-        style={styles.boton}
-        onPress={cerrarSesion}
-      >
-        <Text style={styles.textoBoton}>
-          Cerrar sesión
-        </Text>
-      </TouchableOpacity>
+  style={styles.boton}
+  onPress={() => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Login" }],
+    });
+  }}
+>
+  <Text style={styles.textoBoton}>
+    Cerrar sesión
+  </Text>
+</TouchableOpacity>
     </View>
   );
 }
